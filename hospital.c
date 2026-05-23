@@ -26,6 +26,7 @@ void add_p(){
 	np->next=NULL;
 	if(head==NULL){
 		head=np;
+		return;
 		}
 	struct p* temp=head;
 	while(temp->next!=NULL){
@@ -37,7 +38,7 @@ void add_p(){
 	
 void display(){
 	struct p* temp=head;
-	while(temp->next!=NULL){
+	while(temp!=NULL){
 	 printf("%d %s %s",temp->id,temp->name,temp->status);
 	 temp=temp->next;
 	 }
@@ -46,11 +47,11 @@ void update(int id,char status[]){
      
      struct p* temp=head;
      
-     while(temp->next!=NULL && temp->id!=id)
+     while(temp!=NULL && temp->id!=id)
      {
      	temp=temp->next;
      	}
-     	if(temp->next==NULL){
+     	if(temp==NULL){
      		printf("No id found!.");
      		}
      	strcpy(temp->status,status);
@@ -59,6 +60,8 @@ void update(int id,char status[]){
      
     add_p();
     add_p();
+	add_p();
+	add_p();
     update(2,"DISCHARGE");
     display();
     return 0;
